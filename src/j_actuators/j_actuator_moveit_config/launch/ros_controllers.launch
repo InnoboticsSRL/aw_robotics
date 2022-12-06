@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="joint_size" default="J17"/>
+  <arg name="moveit_pkg" value="j_actuator_moveit_config"/>
+
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(eval find(moveit_pkg)+'/config/ros_controllers_'+(joint_size)+'.yaml')" command="load"/>
+
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+    output="screen" args=""/>
+
+</launch>

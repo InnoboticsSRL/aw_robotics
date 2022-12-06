@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: awjoint1750
+    relative_path: urdf/awjoint1750.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/awjoint1750.srdf
+  CONFIG:
+    author_name: Mattia Dei Rossi
+    author_email: deirossi@automationware.it
+    generated_timestamp: 1669901889
