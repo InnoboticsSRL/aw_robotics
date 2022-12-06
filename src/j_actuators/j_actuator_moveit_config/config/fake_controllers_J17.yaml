@@ -1,0 +1,8 @@
+controller_list:
+  - name: fake_awjoint_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - J17
+initial:  # Define initial robot poses.
+  - group: awjoint
+    pose: home

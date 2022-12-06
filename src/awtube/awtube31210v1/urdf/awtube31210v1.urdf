@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="awtube31210v1">
+  <link
+    name="awtube3_baselink">
+    <inertial>
+      <origin
+        xyz="0 0 0.012"
+        rpy="0 0 0" />
+      <mass
+        value="2.35" />
+      <inertia
+        ixx="0.00787708"
+        ixy="0"
+        ixz="0"
+        iyy="0.00787093"
+        iyz="3E-08"
+        izz="0.014627" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/awtube3_baselink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/controllo/awtube3_baselink.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="awtube3_link1">
+    <inertial>
+      <origin
+        xyz="0 0.00423 0.09312"
+        rpy="0 0 0" />
+      <mass
+        value="13.53" />
+      <inertia
+        ixx="0.07436319"
+        ixy="1.243E-05"
+        ixz="1.542E-05"
+        iyy="0.07237734"
+        iyz="-0.000349"
+        izz="0.05414614" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/awtube3_link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/controllo/awtube3_link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="awtube3_joint1"
+    type="revolute">
+    <origin
+      xyz="0 0 0.025"
+      rpy="0 0 0" />
+    <parent
+      link="awtube3_baselink" />
+    <child
+      link="awtube3_link1" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="360"
+      velocity="1.24" />
+    <dynamics
+      damping="1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="awtube3_link2">
+    <inertial>
+      <origin
+        xyz="-6E-05 -0.18233 0.12468"
+        rpy="0 0 0" />
+      <mass
+        value="25.21" />
+      <inertia
+        ixx="1.579834"
+        ixy="0.0005783"
+        ixz="-0.0003135"
+        iyy="0.085833"
+        iyz="0.63253542"
+        izz="1.52496538" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/awtube3_link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/controllo/awtube3_link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="awtube3_joint2"
+    type="revolute">
+    <origin
+      xyz="0 0.1045 0.0915"
+      rpy="1.5708 0 -3.1416" />
+    <parent
+      link="awtube3_link1" />
+    <child
+      link="awtube3_link2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.1"
+      effort="360"
+      velocity="1.24" />
+    <dynamics
+      damping="1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="awtube3_link3">
+    <inertial>
+      <origin
+        xyz="-0.00281 7E-05 0.11828"
+        rpy="0 0 0" />
+      <mass
+        value="5.97" />
+      <inertia
+        ixx="0.11042464"
+        ixy="-3.927E-05"
+        ixz="-0.00257"
+        iyy="0.115612"
+        iyz="9.279E-05"
+        izz="0.01580659" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/awtube3_link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/controllo/awtube3_link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="awtube3_joint3"
+    type="revolute">
+    <origin
+      xyz="0 0.5235 0.0545"
+      rpy="-3.1416 0 -3.1416" />
+    <parent
+      link="awtube3_link2" />
+    <child
+      link="awtube3_link3" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-4.71"
+      upper="1.57"
+      effort="170"
+      velocity="2.5" />
+    <dynamics
+      damping="1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="awtube3_link4">
+    <inertial>
+      <origin
+        xyz="-0.0033 0.00011 0.35508"
+        rpy="0 0 0" />
+      <mass
+        value="5.22" />
+      <inertia
+        ixx="0.073488"
+        ixy="-3.818E-05"
+        ixz="-0.00080528"
+        iyy="0.07863"
+        iyz="4.173E-05"
+        izz="0.013846" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/awtube3_link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/controllo/awtube3_link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="awtube3_joint4"
+    type="revolute">
+    <origin
+      xyz="0.066 0 0.1591"
+      rpy="0 1.5708 0" />
+    <parent
+      link="awtube3_link3" />
+    <child
+      link="awtube3_link4" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="80"
+      velocity="3.4" />
+    <dynamics
+      damping="1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="awtube3_link5">
+    <inertial>
+      <origin
+        xyz="0.00013 0.191 -0.04671"
+        rpy="0 0 0" />
+      <mass
+        value="4.01" />
+      <inertia
+        ixx="0.028283"
+        ixy="-2.45E-05"
+        ixz="-2.965E-05"
+        iyy="0.012301"
+        iyz="-0.041763"
+        izz="0.16942" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/awtube3_link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/controllo/awtube3_link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="awtube3_joint5"
+    type="revolute">
+    <origin
+      xyz="0.066 0 0.409"
+      rpy="0 1.5708 0" />
+    <parent
+      link="awtube3_link4" />
+    <child
+      link="awtube3_link5" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.6"
+      upper="4.71"
+      effort="80"
+      velocity="3.4" />
+    <dynamics
+      damping="1"
+      friction="0.1" />
+  </joint>
+  <link
+    name="awtube3_link6">
+    <inertial>
+      <origin
+        xyz="8E-05 -9E-05 -0.01309"
+        rpy="0 0 0" />
+      <mass
+        value="0.25" />
+      <inertia
+        ixx="0.00015313"
+        ixy="1.12E-06"
+        ixz="-1.6E-07"
+        iyy="0.00015133"
+        iyz="-7E-08"
+        izz="0.00028746" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/awtube3_link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.8902 0.8902 0.91373 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awtube31210v1/meshes/controllo/awtube3_link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="awtube3_joint6"
+    type="revolute">
+    <origin
+      xyz="0 -0.315 -0.0655"
+      rpy="-1.5708 0 -3.1416" />
+    <parent
+      link="awtube3_link5" />
+    <child
+      link="awtube3_link6" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="37"
+      velocity="6.36" />
+    <dynamics
+      damping="1"
+      friction="0.1" />
+  </joint>
+</robot>

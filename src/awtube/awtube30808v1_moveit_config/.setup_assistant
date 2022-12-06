@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: awtube30808v1
+    relative_path: urdf/awtube30808v1.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/awtube30808v1.srdf
+  CONFIG:
+    author_name: Mattia Dei Rossi
+    author_email: deirossi@automationware.it
+    generated_timestamp: 1670317721

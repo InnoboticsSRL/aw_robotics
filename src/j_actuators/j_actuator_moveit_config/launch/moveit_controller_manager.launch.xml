@@ -1,0 +1,11 @@
+<launch>
+
+  <arg name="joint_size" default="J17"/>
+  <arg name="moveit_pkg" value="j_actuator_moveit_config"/>
+
+  <!-- Define the controller manager plugin to use for trajectory execution -->
+  <param name="moveit_controller_manager" value="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
+
+  <!-- loads controller list to the param server -->
+  <rosparam file="$(eval find(moveit_pkg)+'/config/ros_controllers_'+(joint_size)+'.yaml')" command="load"/>
+</launch>
