@@ -1,8 +1,0 @@
-prefix=/home/progettista5u/aw_robotics/install
-
-Name: awtube31210v1
-Description: Description of awtube31210v1
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

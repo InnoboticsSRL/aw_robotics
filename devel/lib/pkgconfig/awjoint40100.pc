@@ -1,1 +1,0 @@
-/home/progettista5u/aw_robotics/devel/.private/awjoint40100/lib/pkgconfig/awjoint40100.pc

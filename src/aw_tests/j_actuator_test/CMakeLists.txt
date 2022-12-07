@@ -7,7 +7,8 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 catkin_package(
-CATKIN_DEPENDS roscpp
+CATKIN_DEPENDS 
+  roscpp
 )
 
 include_directories(

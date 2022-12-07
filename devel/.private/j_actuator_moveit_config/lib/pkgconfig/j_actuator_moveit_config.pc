@@ -1,8 +1,0 @@
-prefix=/home/progettista5u/aw_robotics/devel/.private/j_actuator_moveit_config
-
-Name: j_actuator_moveit_config
-Description: Description of j_actuator_moveit_config
-Version: 0.3.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
