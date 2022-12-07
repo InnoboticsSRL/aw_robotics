@@ -1,0 +1,9 @@
+Header header
+float32 execution_time_mean_us
+float32 wcet_us
+int32 overrun_peaks
+float32 jitter_mean_us
+float32 jitter_std_dev_us
+int32 jitter_peaks
+float32 max_jitter_us
+

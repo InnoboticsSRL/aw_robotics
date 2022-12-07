@@ -1,0 +1,4 @@
+---
+bool bool_data
+bool success
+string message

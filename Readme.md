@@ -27,7 +27,7 @@ roslaunch j_actuator_moveit_config demo.launch joint_id:=awjoint32100 joint_size
 ```
 ### Launch with pilz pipeline
 ```bash
-roslaunch j_actuator_moveit_config demo.launch joint_id:=awjoint32100 joint_size:=J32pipeline:=pilz_industrial_motion_planner
+roslaunch j_actuator_moveit_config demo.launch joint_id:=awjoint32100 joint_size:=J32 pipeline:=pilz_industrial_motion_planner
 ```
 
 ## Launch Awtube simulation

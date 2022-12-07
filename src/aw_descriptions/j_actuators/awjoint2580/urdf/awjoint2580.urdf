@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="awjoint2580">
+  <link
+    name="rifJ25">
+    <inertial>
+      <origin
+        xyz="0 0 -0.086"
+        rpy="0 0 0" />
+      <mass
+        value="8" />
+      <inertia
+        ixx="0.033132"
+        ixy="4.051E-05"
+        ixz="5.876E-05"
+        iyy="0.019469"
+        iyz="-0.00035797"
+        izz="0.031908" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="3.14 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awjoint2580/meshes/rifJ25.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="3.14 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awjoint2580/meshes/rifJ25.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="J25">
+    <inertial>
+      <origin
+        xyz="0 0 -0.0084"
+        rpy="0 0 0" />
+      <mass
+        value="0.51" />
+      <inertia
+        ixx="0.00070332"
+        ixy="0"
+        ixz="0"
+        iyy="0.00074116"
+        iyz="0"
+        izz="0.00136991" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awjoint2580/meshes/J25.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.8902 0.8902 0.91373 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://awjoint2580/meshes/J25.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="J25"
+    type="revolute">
+    <origin
+      xyz="0.0925 0 +0.0875"
+      rpy="0 1.5708 0" />
+    <parent
+      link="rifJ25" />
+    <child
+      link="J25" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="150"
+      velocity="2.71" />
+    <dynamics
+      damping="1"
+      friction="0.1" />
+  </joint>
+</robot>
