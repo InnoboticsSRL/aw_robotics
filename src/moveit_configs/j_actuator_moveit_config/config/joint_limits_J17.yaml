@@ -5,5 +5,5 @@ joint_limits:
   J17:
     has_velocity_limits: true
     max_velocity: 6.36
-    has_acceleration_limits: false
-    max_acceleration: 0
+    has_acceleration_limits: true
+    max_acceleration: 2.1

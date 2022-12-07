@@ -5,30 +5,30 @@ joint_limits:
   awtube3_joint1:
     has_velocity_limits: true
     max_velocity: 1.2436
-    has_acceleration_limits: false
-    max_acceleration: 0
+    has_acceleration_limits: true
+    max_acceleration: 0.4
   awtube3_joint2:
     has_velocity_limits: true
     max_velocity: 0.86
-    has_acceleration_limits: false
-    max_acceleration: 0
+    has_acceleration_limits: true
+    max_acceleration: 0.3
   awtube3_joint3:
     has_velocity_limits: true
     max_velocity: 1.24
-    has_acceleration_limits: false
-    max_acceleration: 0
+    has_acceleration_limits: true
+    max_acceleration: 0.4
   awtube3_joint4:
     has_velocity_limits: true
     max_velocity: 2.71
-    has_acceleration_limits: false
-    max_acceleration: 0
+    has_acceleration_limits: true
+    max_acceleration: 0.9
   awtube3_joint5:
     has_velocity_limits: true
     max_velocity: 2.71
-    has_acceleration_limits: false
-    max_acceleration: 0
+    has_acceleration_limits: true
+    max_acceleration: 0.9
   awtube3_joint6:
     has_velocity_limits: true
     max_velocity: 3.61
-    has_acceleration_limits: false
-    max_acceleration: 0
+    has_acceleration_limits: true
+    max_acceleration: 1.2
