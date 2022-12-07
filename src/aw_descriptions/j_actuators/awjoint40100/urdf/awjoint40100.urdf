@@ -23,7 +23,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14 0 0" />
       <geometry>
         <mesh
           filename="package://awjoint40100/meshes/rifJ40.STL" />
@@ -37,7 +37,7 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14 0 0" />
       <geometry>
         <mesh
           filename="package://awjoint40100/meshes/rifJ40.STL" />
@@ -88,7 +88,7 @@
     name="J40"
     type="revolute">
     <origin
-      xyz="0.1179 0 -0.1045"
+      xyz="0.1179 0 +0.1045"
       rpy="0 1.5708 0" />
     <parent
       link="rifJ40" />

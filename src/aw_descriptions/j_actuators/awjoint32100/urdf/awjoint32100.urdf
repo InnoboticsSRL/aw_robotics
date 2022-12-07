@@ -23,7 +23,7 @@
     <visual>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14 0 0" />
       <geometry>
         <mesh
           filename="package://awjoint32100/meshes/rifJ32.STL" />
@@ -37,7 +37,7 @@
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="0 0 0" />
+        rpy="3.14 0 0" />
       <geometry>
         <mesh
           filename="package://awjoint32100/meshes/rifJ32.STL" />
@@ -88,7 +88,7 @@
     name="J32"
     type="revolute">
     <origin
-      xyz="0.1085 0 -0.1005"
+      xyz="0.1085 0 +0.1005"
       rpy="0 1.5708 0" />
     <parent
       link="rifJ32" />
