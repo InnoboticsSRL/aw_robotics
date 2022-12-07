@@ -7,21 +7,28 @@
 
 #include <ros/ros.h>
 #include <moveit/move_group_interface/move_group_interface.h>
+#include <geometry_msgs/Pose.h>
 
-bool setTargetJointValues( const std::vector<double> &des_joint_values, moveit::planning_interface::MoveGroupInterface &move_group, double &scale_vel )
+bool plan_movement( 
+    const geometry_msgs::Pose &pose, 
+    moveit::planning_interface::MoveGroupInterface &move_group, 
+    moveit::planning_interface::MoveGroupInterface::Plan &plan, 
+    double &scale_vel )
 {
-    std::vector<double> joints;
-    joints = move_group.getCurrentJointValues();
-    moveit::core::RobotStatePtr current_state = move_group.getCurrentState();
+    move_group.setPoseTarget(pose);
     move_group.setMaxVelocityScalingFactor(scale_vel);
-    return move_group.setJointValueTarget( des_joint_values ) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
+    return (move_group.plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
 }
 //-----------------------------------------------------------------------------------------------------------------------------------
 
-void move_joints(const std::vector<double> &d_j_values, moveit::planning_interface::MoveGroupInterface &move_group, double &scal_vel)
+void move_to_pose(
+    const geometry_msgs::Pose &pose, 
+    moveit::planning_interface::MoveGroupInterface &move_group, 
+    moveit::planning_interface::MoveGroupInterface::Plan &plan,
+    double &scal_vel)
 {
 
-    if( setTargetJointValues( d_j_values, move_group, scal_vel ) ) {
+    if( plan_movement( pose, move_group, plan, scal_vel ) ) {
         ROS_INFO( "JOINT GOAL: Successfuly generated JointPlan! Move to desired JointValues..." );
         move_group.move();
     }
@@ -46,8 +53,8 @@ int main( int argc, char **argv )
     // moveit initialization
     const std::string PLANNING_GROUP = "arm";
     moveit::planning_interface::MoveGroupInterface move_group( PLANNING_GROUP );
-    moveit::planning_interface::MoveGroupInterface::Plan joint_plan;
-    moveit::planning_interface::MoveGroupInterface::Plan initial_plan;
+    moveit::planning_interface::MoveGroupInterface::Plan plan;
+    // moveit::planning_interface::MoveGroupInterface::Plan initial_plan;
 
     const robot_state::JointModelGroup *joint_model_group =
         move_group.getCurrentState()->getJointModelGroup( PLANNING_GROUP );
@@ -57,11 +64,23 @@ int main( int argc, char **argv )
     move_group.setGoalTolerance( 0.0005 );
     move_group.setGoalOrientationTolerance( 0.0005 );
 
-    std::vector<double> home_pos = {0, 0, -1.567, 0, 1.567 , 0};
     // arbitrarily chosen
-    std::vector<double> first_pos = {2.39, 0.441, -2.023, -2.331, 2.238 , -1.378};
-    std::vector<double> second_pos = {1.341, -1.365, -2.674, 1.554, 0.27 , -1.959};
-    std::vector<double> third_pos = {1.229, 0.529, -1.834, -0.481, 0.949 , -2.92};
+    geometry_msgs::Pose target_pose1;
+    target_pose1.orientation.w = 1.0;
+    target_pose1.position.x = 0.28;
+    target_pose1.position.y = 0.2;
+    target_pose1.position.z = 0.5;
+    geometry_msgs::Pose target_pose2;
+    target_pose1.orientation.w = -1.0;
+    target_pose1.position.x = -0.28;
+    target_pose1.position.y = -0.2;
+    target_pose1.position.z = 0.5;
+    geometry_msgs::Pose target_pose3;
+    target_pose1.orientation.w = 1.0;
+    target_pose1.position.x = 0.28;
+    target_pose1.position.y = -0.2;
+    target_pose1.position.z = -0.5;
+    
 
     // velocity multiplier
     double scale_homing_vel = 0.4;
@@ -69,23 +88,18 @@ int main( int argc, char **argv )
 
     for (int n=0;n<ncycles;n++)
     {
-      ROS_INFO("  ITERATION: %d", n+1);
+        ROS_INFO("  ITERATION: %d", n+1);
 
-      scale_homing_vel = 0.9;
-      move_joints(home_pos, move_group, scale_homing_vel);
+        moveit::core::RobotStatePtr current_state = move_group.getCurrentState();
+        
+        std::vector<double> joint_group_positions;
+        current_state->copyJointGroupPositions(joint_model_group, joint_group_positions);
 
-      scale_homing_vel = 0.9;
-      move_joints(first_pos, move_group, scale_homing_vel);
+        move_to_pose(target_pose1, move_group, plan, scale_homing_vel);
 
-      scale_homing_vel = 0.9;
-      move_joints(second_pos, move_group, scale_homing_vel);
+        // move_to_pose(target_pose2, move_group, plan, scale_homing_vel);
 
-      scale_homing_vel = 0.9;
-      move_joints(third_pos, move_group, scale_homing_vel);
-
-      scale_homing_vel = 0.9;
-      move_joints(home_pos, move_group, scale_homing_vel);
-
+        // move_to_pose(target_pose3, move_group, plan, scale_homing_vel);
 
     }
 
