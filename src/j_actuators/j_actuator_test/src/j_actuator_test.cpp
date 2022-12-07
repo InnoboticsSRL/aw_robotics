@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <moveit/move_group_interface/move_group_interface.h>
 
-bool setTargetJointValues(const double &des_joint_values, const moveit::planning_interface::MoveGroupInterface &move_group, double &vel_scale)
+bool setTargetJointValues(const std::vector<double> &des_joint_values, moveit::planning_interface::MoveGroupInterface &move_group, double &vel_scale)
 {
     moveit::core::RobotStatePtr current_state = move_group.getCurrentState();
     move_group.setMaxVelocityScalingFactor(vel_scale);
@@ -9,12 +9,12 @@ bool setTargetJointValues(const double &des_joint_values, const moveit::planning
     
 }
 
-void move_joints(const double &des_joint_values, const moveit::planning_interface::MoveGroupInterface &move_group, double &vel_scale)
+void move_joints(const std::vector<double> &des_joint_values, moveit::planning_interface::MoveGroupInterface &move_group, double &vel_scale)
 {
     if(setTargetJointValues(des_joint_values, move_group, vel_scale))
     {
         ROS_INFO("JOINT GOAL: Successfuly generated JointPlan! Move to desired JointValues...");
-        move_group.move(des_joint_values);
+        move_group.move();
     }
     else
     {
@@ -32,11 +32,15 @@ int main(int argc, char **argv)
 
     const std::string PLANNING_GROUP = "awjoint";
     moveit::planning_interface::MoveGroupInterface move_group(PLANNING_GROUP);
-    const int nCycles = 2;
-    const double vec_scaling = 0.9;
+    moveit::planning_interface::MoveGroupInterface::Plan joint_plan;
+    moveit::planning_interface::MoveGroupInterface::Plan initial_plan;
+    const robot_state::JointModelGroup *joint_model_group =
+        move_group.getCurrentState()->getJointModelGroup( PLANNING_GROUP );
+    const int nCycles = 20;
+    double vec_scaling = 0.9;
 
-    double neg_extreme = -3.14;
-    double pos_extreme = 3.14;
+    std::vector<double> neg_extreme = {-3.14/2};
+    std::vector<double> pos_extreme = {3.14/2};
 
     for(int i = 0; i < nCycles ; ++i)
     {

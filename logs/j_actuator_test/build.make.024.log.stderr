@@ -1,0 +1,17 @@
+[01m[K/home/progettista5u/aw_robotics/src/j_actuators/j_actuator_test/src/j_actuator_test.cpp:[m[K In function ‘[01m[Kvoid move_joints(const std::vector<double>&, const moveit::planning_interface::MoveGroupInterface&, double&)[m[K’:
+[01m[K/home/progettista5u/aw_robotics/src/j_actuators/j_actuator_test/src/j_actuator_test.cpp:14:47:[m[K [01;31m[Kerror: [m[Kbinding reference of type ‘[01m[Kmoveit::planning_interface::MoveGroupInterface&[m[K’ to ‘[01m[Kconst moveit::planning_interface::MoveGroupInterface[m[K’ discards qualifiers
+     if(setTargetJointValues(des_joint_values, [01;31m[Kmove_group[m[K, vel_scale))
+                                               [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/progettista5u/aw_robotics/src/j_actuators/j_actuator_test/src/j_actuator_test.cpp:4:6:[m[K [01;36m[Knote: [m[K  initializing argument 2 of ‘[01m[Kbool setTargetJointValues(const std::vector<double>&, moveit::planning_interface::MoveGroupInterface&, double&)[m[K’
+ bool [01;36m[KsetTargetJointValues[m[K(const std::vector<double> &des_joint_values, moveit::planning_interface::MoveGroupInterface &move_group, double &vel_scale)
+      [01;36m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/progettista5u/aw_robotics/src/j_actuators/j_actuator_test/src/j_actuator_test.cpp:17:25:[m[K [01;31m[Kerror: [m[Kpassing ‘[01m[Kconst moveit::planning_interface::MoveGroupInterface[m[K’ as ‘[01m[Kthis[m[K’ argument discards qualifiers [[01;31m[K-fpermissive[m[K]
+         move_group.move([01;31m[K)[m[K;
+                         [01;31m[K^[m[K
+In file included from [01m[K/home/progettista5u/aw_robotics/src/j_actuators/j_actuator_test/src/j_actuator_test.cpp:2:0[m[K:
+[01m[K/opt/ros/melodic/include/moveit/move_group_interface/move_group_interface.h:685:33:[m[K [01;36m[Knote: [m[K  in call to ‘[01m[Kmoveit::core::MoveItErrorCode moveit::planning_interface::MoveGroupInterface::move()[m[K’
+   moveit::core::MoveItErrorCode [01;36m[Kmove[m[K();
+                                 [01;36m[K^~~~[m[K
+make[2]: *** [CMakeFiles/j_actuator_test.dir/src/j_actuator_test.cpp.o] Error 1
+make[1]: *** [CMakeFiles/j_actuator_test.dir/all] Error 2
+make: *** [all] Error 2

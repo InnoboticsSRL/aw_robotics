@@ -3,6 +3,7 @@ project(j_actuator_test)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  moveit_ros_planning_interface
 )
 
 catkin_package(

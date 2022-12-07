@@ -1,0 +1,7 @@
+Symlinking /home/progettista5u/aw_robotics/devel/lib/j_actuator_test/j_actuator_test
+Symlinking /home/progettista5u/aw_robotics/devel/lib/pkgconfig/j_actuator_test.pc
+Symlinking /home/progettista5u/aw_robotics/devel/share/j_actuator_test/cmake/j_actuator_testConfig-version.cmake
+Symlinking /home/progettista5u/aw_robotics/devel/share/j_actuator_test/cmake/j_actuator_testConfig.cmake
+Cleaning: (/home/progettista5u/aw_robotics/devel/.private/j_actuator_test/lib/j_actuator_test/j_actuator_test_node, /home/progettista5u/aw_robotics/devel/lib/j_actuator_test/j_actuator_test_node)
+Unlinking: /home/progettista5u/aw_robotics/devel/lib/j_actuator_test/j_actuator_test_node
+Already unlinked: {}
