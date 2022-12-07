@@ -1,5 +1,0 @@
-awtube/awtube31210v1_moveit_config
-/home/progettista5u/aw_robotics/devel/.private/awtube31210v1_moveit_config/cmake.lock /home/progettista5u/aw_robotics/devel/./cmake.lock
-/home/progettista5u/aw_robotics/devel/.private/awtube31210v1_moveit_config/lib/pkgconfig/awtube31210v1_moveit_config.pc /home/progettista5u/aw_robotics/devel/lib/pkgconfig/awtube31210v1_moveit_config.pc
-/home/progettista5u/aw_robotics/devel/.private/awtube31210v1_moveit_config/share/awtube31210v1_moveit_config/cmake/awtube31210v1_moveit_configConfig-version.cmake /home/progettista5u/aw_robotics/devel/share/awtube31210v1_moveit_config/cmake/awtube31210v1_moveit_configConfig-version.cmake
-/home/progettista5u/aw_robotics/devel/.private/awtube31210v1_moveit_config/share/awtube31210v1_moveit_config/cmake/awtube31210v1_moveit_configConfig.cmake /home/progettista5u/aw_robotics/devel/share/awtube31210v1_moveit_config/cmake/awtube31210v1_moveit_configConfig.cmake

@@ -1,5 +1,0 @@
-awtube/awtube31210v1
-/home/progettista5u/aw_robotics/devel/.private/awtube31210v1/cmake.lock /home/progettista5u/aw_robotics/devel/./cmake.lock
-/home/progettista5u/aw_robotics/devel/.private/awtube31210v1/lib/pkgconfig/awtube31210v1.pc /home/progettista5u/aw_robotics/devel/lib/pkgconfig/awtube31210v1.pc
-/home/progettista5u/aw_robotics/devel/.private/awtube31210v1/share/awtube31210v1/cmake/awtube31210v1Config-version.cmake /home/progettista5u/aw_robotics/devel/share/awtube31210v1/cmake/awtube31210v1Config-version.cmake
-/home/progettista5u/aw_robotics/devel/.private/awtube31210v1/share/awtube31210v1/cmake/awtube31210v1Config.cmake /home/progettista5u/aw_robotics/devel/share/awtube31210v1/cmake/awtube31210v1Config.cmake
