@@ -1,0 +1,6 @@
+devel_space: /home/progettista5u/aw_robotics/devel
+install: false
+install_space: /home/progettista5u/aw_robotics/install
+profile: default
+source_space: /home/progettista5u/aw_robotics/src
+workspace: /home/progettista5u/aw_robotics

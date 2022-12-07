@@ -1,0 +1,4 @@
+[35m[1mScanning dependencies of target j_actuator_test[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/j_actuator_test.dir/src/j_actuator_test.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/progettista5u/aw_robotics/devel/.private/j_actuator_test/lib/j_actuator_test/j_actuator_test[0m
+[100%] Built target j_actuator_test

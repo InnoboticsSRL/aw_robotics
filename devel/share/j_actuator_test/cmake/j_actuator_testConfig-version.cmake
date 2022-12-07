@@ -1,0 +1,1 @@
+/home/progettista5u/aw_robotics/devel/.private/j_actuator_test/share/j_actuator_test/cmake/j_actuator_testConfig-version.cmake
