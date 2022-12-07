@@ -1,0 +1,8 @@
+prefix=/home/progettista5u/aw_robotics/devel/.private/awjoint2580
+
+Name: awjoint2580
+Description: Description of awjoint2580
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

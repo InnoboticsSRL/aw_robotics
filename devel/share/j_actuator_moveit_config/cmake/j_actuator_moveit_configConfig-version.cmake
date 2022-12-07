@@ -1,0 +1,1 @@
+/home/progettista5u/aw_robotics/devel/.private/j_actuator_moveit_config/share/j_actuator_moveit_config/cmake/j_actuator_moveit_configConfig-version.cmake

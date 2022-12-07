@@ -1,0 +1,1 @@
+/home/progettista5u/aw_robotics/devel/.private/awtube31210v1/lib/pkgconfig/awtube31210v1.pc

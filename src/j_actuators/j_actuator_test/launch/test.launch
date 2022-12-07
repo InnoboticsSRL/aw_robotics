@@ -1,0 +1,14 @@
+<launch>
+
+    <arg name="joint_id" default="awjoint1750" />
+    <arg name="joint_size" default="J17" />
+
+    <!-- Run the main MoveIt! executable without trajectory execution (we do not have controllers configured by default) -->
+    <include file="$(find j_actuator_moveit_config)/launch/demo.launch">
+        <arg name="joint_id" value="$(arg joint_id)" />
+        <arg name="joint_size" value="$(arg joint_size)" />
+    </include>
+
+    <node name="j_actuator_test_node" pkg="j_actuator_test" type="j_actuator_test" output="screen" />
+
+</launch>

@@ -1,0 +1,8 @@
+prefix=/home/progettista5u/aw_robotics/devel/.private/awtube31814v2
+
+Name: awtube31814v2
+Description: Description of awtube31814v2
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

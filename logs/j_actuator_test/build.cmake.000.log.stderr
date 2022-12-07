@@ -1,0 +1,11 @@
+[31m[1mCMake Error[0m at /home/progettista5u/aw_robotics/src/j_actuators/j_actuator_test/CMakeLists.txt:16 (add_executable):
+  Cannot find source file:
+
+    /src/j_actuator_test.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp
+  .hxx .in .txx
+
+
+CMake Error: CMake can not determine linker language for target: j_actuator_test
+CMake Error: Cannot determine link language for target "j_actuator_test".

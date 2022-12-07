@@ -1,7 +1,7 @@
 <launch>
 
   <!-- specify the planning pipeline -->
-  <arg name="pipeline" default="pilz_industrial_motion_planner" />
+  <arg name="pipeline" default="ompl" />
 
   <!-- By default, we do not start a database (it can be large) -->
   <arg name="db" default="false" />

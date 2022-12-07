@@ -1,0 +1,1 @@
+/home/progettista5u/aw_robotics/devel/.private/awtube30808v1_moveit_config/share/awtube30808v1_moveit_config/cmake/awtube30808v1_moveit_configConfig-version.cmake
