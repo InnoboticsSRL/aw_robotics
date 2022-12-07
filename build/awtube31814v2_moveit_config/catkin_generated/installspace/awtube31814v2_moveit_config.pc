@@ -1,8 +1,0 @@
-prefix=/home/progettista5u/aw_robotics/install
-
-Name: awtube31814v2_moveit_config
-Description: Description of awtube31814v2_moveit_config
-Version: 0.3.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

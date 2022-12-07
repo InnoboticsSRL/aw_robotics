@@ -1,8 +1,0 @@
-prefix=/home/progettista5u/aw_robotics/devel/.private/awtube30808v1
-
-Name: awtube30808v1
-Description: Description of awtube30808v1
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

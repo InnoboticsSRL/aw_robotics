@@ -1,6 +1,0 @@
-/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o: In function `_start':
-(.text+0x20): undefined reference to `main'
-collect2: error: ld returned 1 exit status
-make[2]: *** [/home/progettista5u/aw_robotics/devel/.private/j_actuator_test/lib/j_actuator_test/j_actuator_test_node] Error 1
-make[1]: *** [CMakeFiles/j_actuator_test_node.dir/all] Error 2
-make: *** [all] Error 2

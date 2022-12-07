@@ -1,8 +1,0 @@
-prefix=/home/progettista5u/aw_robotics/devel/.private/awjoint40100
-
-Name: awjoint40100
-Description: Description of awjoint40100
-Version: 1.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
