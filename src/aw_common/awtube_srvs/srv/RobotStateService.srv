@@ -1,0 +1,3 @@
+---
+aware_msgs/RobotState robot_state
+bool success

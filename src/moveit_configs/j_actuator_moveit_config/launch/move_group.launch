@@ -61,6 +61,7 @@
     <arg name="moveit_controller_manager" value="" unless="$(arg fake_execution)"/>
     <arg name="moveit_controller_manager" value="fake" if="$(arg fake_execution)"/>
     <arg name="fake_execution_type" value="$(arg fake_execution_type)" />
+    <arg name="joint_size" value="$(arg joint_size)" />
   </include>
 
   <!-- Sensors Functionality -->
