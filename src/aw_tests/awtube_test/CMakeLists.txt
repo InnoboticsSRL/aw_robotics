@@ -18,14 +18,19 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(awtube_joint_position_test src/awtube_joint_position_test.cpp)
-add_executable(awtube_pose_test src/awtube_pose_test.cpp)
+add_executable(joint_position_test src/joint_position_test.cpp)
+add_executable(pose_coords_test src/pose_coords_test.cpp)
+add_executable(cartesian_coords_test src/cartesian_coords_test.cpp)
 
-target_link_libraries(awtube_joint_position_test
+target_link_libraries(joint_position_test
    ${catkin_LIBRARIES}
  )
 
-target_link_libraries(awtube_pose_test
+target_link_libraries(pose_coords_test
  ${catkin_LIBRARIES}
 )
+
+target_link_libraries(cartesian_coords_test
+   ${catkin_LIBRARIES}
+ )
 

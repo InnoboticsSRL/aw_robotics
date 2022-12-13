@@ -7,5 +7,6 @@
 
     <include if="$(eval awtube_size == 'S')" file="$(find awtube30808v1_moveit_config)/launch/demo.launch" />
 
-    <node name="awtube_test" pkg="awtube_test" type="awtube_pose_test" output="screen" />
+    <node name="awtube_test" pkg="awtube_test" type="cartesian_coords_test" output="screen" />
+
 </launch>

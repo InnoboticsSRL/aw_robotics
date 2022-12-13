@@ -1,26 +1,28 @@
 /*
-* Copyright Ⓒ Automationware Srl 2022
-* The joint will move using joint position commands
+* Copyright Ⓒ Automationware Srl 2022 
+* Script moves robot using joint position commands
+* Make sure robot joint cannot collide with object in workspace!
 * Author: selvija@automationware.it
-* Mainteiner: selvija@automationware.it
+* Maintainer: selvija@automationware.it
 */
 
 #include <ros/ros.h>
 #include <moveit/move_group_interface/move_group_interface.h>
 
-bool setTargetJointValues(const std::vector<double> &des_joint_values, moveit::planning_interface::MoveGroupInterface &move_group, double &vel_scale)
+bool setTargetJointValues(const std::vector<double> &des_joint_values, moveit::planning_interface::MoveGroupInterface &move_group, double &vel_scale, double &accel_scale)
 {
     std::vector<double> joints;
     joints = move_group.getCurrentJointValues();
     moveit::core::RobotStatePtr current_state = move_group.getCurrentState();
     move_group.setMaxVelocityScalingFactor(vel_scale);
+    move_group.setMaxAccelerationScalingFactor(accel_scale);
     move_group.setJointValueTarget(des_joint_values) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
     
 }
 
-void move_joints(const std::vector<double> &des_joint_values, moveit::planning_interface::MoveGroupInterface &move_group, double &vel_scale)
+void move_joints(const std::vector<double> &des_joint_values, moveit::planning_interface::MoveGroupInterface &move_group, double &vel_scale, double &accel_scale)
 {
-    if(setTargetJointValues(des_joint_values, move_group, vel_scale))
+    if(setTargetJointValues(des_joint_values, move_group, vel_scale, accel_scale))
     {
         ROS_INFO("JOINT GOAL: Successfuly generated JointPlan! Move to desired JointValues...");
         move_group.move();
@@ -49,21 +51,21 @@ int main(int argc, char **argv)
     const robot_state::JointModelGroup *joint_model_group =
         move_group.getCurrentState()->getJointModelGroup( PLANNING_GROUP );
 
-    const int nCycles = 20;
-    double vec_scaling = 0.9;
-
-    move_group.setPlanningTime( 15.0 );//sec arbitrarily chosen
-    // move_group.setGoalTolerance( 0.0005 );//m arbitrarily chosen
-    // move_group.setGoalOrientationTolerance( 0.0005 );//rad arbitrarily chosenI
+    const int nCycles = 4;
+    double vec_scaling = 0.5;
+    double accel_scaling = 0.5;
+    move_group.setPlanningTime( 15.0 );
+    move_group.setGoalTolerance( 0.0005 );
+    move_group.setGoalOrientationTolerance( 0.0005 );
     
     std::vector<double> neg_extreme = {-3.14/2};
     std::vector<double> pos_extreme = {3.14/2};
 
     for(int i = 0; i < nCycles ; ++i)
     {
-        move_joints(neg_extreme, move_group, vec_scaling);
+        move_joints(neg_extreme, move_group, vec_scaling, accel_scaling);
 
-        move_joints(pos_extreme, move_group, vec_scaling);
+        move_joints(pos_extreme, move_group, vec_scaling, accel_scaling);
     }
 
     return 0;
