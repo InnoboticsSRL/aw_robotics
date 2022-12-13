@@ -52,6 +52,9 @@
   <build_depend>roscpp</build_depend>
   <build_export_depend>roscpp</build_export_depend>
   <exec_depend>roscpp</exec_depend>
+  <build_depend>moveit_visual_tools</build_depend>
+  <build_export_depend>moveit_visual_tools</build_export_depend>
+  <exec_depend>moveit_visual_tools</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

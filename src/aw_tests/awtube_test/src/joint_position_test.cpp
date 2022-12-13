@@ -8,10 +8,30 @@
 
 #include <ros/ros.h>
 #include <moveit/move_group_interface/move_group_interface.h>
+#include <moveit_visual_tools/moveit_visual_tools.h>
+#include <geometry_msgs/Pose.h>
+
+// void publishVisualizations(
+//     const geometry_msgs::Pose &current_pose, 
+//     moveit_visual_tools::MoveItVisualTools visual_tools, 
+//     const moveit::planning_interface::MoveGroupInterface::Plan &plan,
+//     moveit::planning_interface::MoveGroupInterface &move_group
+//     )
+// {
+//     visual_tools.publishAxisLabeled(current_pose, "(" + std::to_string(current_pose.position.x) + ", " + std::to_string(current_pose.position.y) + " )");
+//     visual_tools.publishTrajectoryLine(
+//         plan.trajectory_, 
+//         move_group.getCurrentState()->getJointModelGroup("arm")->getLinkModel("awtube3_link6"), 
+//         move_group.getCurrentState()->getJointModelGroup("arm")
+//         );
+//     visual_tools.trigger();
+// }
 
 bool setTargetJointValues( 
     const std::vector<double> &des_joint_values, 
-    moveit::planning_interface::MoveGroupInterface &move_group, 
+    moveit::planning_interface::MoveGroupInterface &move_group,
+    moveit::planning_interface::MoveGroupInterface::Plan &plan, 
+    moveit_visual_tools::MoveItVisualTools visual_tools, 
     double &scale_vel,
     double &scale_accel )
 {
@@ -20,17 +40,27 @@ bool setTargetJointValues(
     moveit::core::RobotStatePtr current_state = move_group.getCurrentState();
     move_group.setMaxVelocityScalingFactor(scale_vel);
     move_group.setMaxAccelerationScalingFactor(scale_accel);
-    return move_group.setJointValueTarget( des_joint_values ) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
+    move_group.setJointValueTarget( des_joint_values ) == moveit::planning_interface::MoveItErrorCode::SUCCESS;
+    bool success = (move_group.plan(plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);
+    visual_tools.publishTrajectoryLine(
+        plan.trajectory_, 
+        move_group.getCurrentState()->getJointModelGroup("arm")->getLinkModel("awtube3_link6"),
+        move_group.getCurrentState()->getJointModelGroup("arm")
+        );
+    visual_tools.trigger();
+    return success;
 }
 
 void move_joints(
     const std::vector<double> &d_j_values, 
-    moveit::planning_interface::MoveGroupInterface &move_group, 
+    moveit::planning_interface::MoveGroupInterface &move_group,
+    moveit::planning_interface::MoveGroupInterface::Plan &plan, 
+    moveit_visual_tools::MoveItVisualTools visual_tools,
     double &scale_vel,
     double &scale_accel)
 {
 
-    if( setTargetJointValues( d_j_values, move_group, scale_vel , scale_accel) ) {
+    if( setTargetJointValues( d_j_values, move_group, plan, visual_tools, scale_vel , scale_accel) ) {
         ROS_INFO( "JOINT GOAL: Successfuly generated JointPlan! Move to desired JointValues..." );
         move_group.move();
     }
@@ -59,6 +89,12 @@ int main( int argc, char **argv )
     const robot_state::JointModelGroup *joint_model_group =
         move_group.getCurrentState()->getJointModelGroup( PLANNING_GROUP );
 
+    // visual tools
+    namespace rvt = rviz_visual_tools;
+    moveit_visual_tools::MoveItVisualTools visual_tools("awtube3_baselink");
+
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
     // arbitrarily chosen
     std::vector<double> home_pos = {0, 0, 0, 0, 0 , 0};
     std::vector<double> first_pos = {0.36982877615134585, -0.7804044352135309, -1.4072247086242615, 1.109727813140365, -0.03964222664063516 , -1.3265077265702658};
@@ -76,11 +112,11 @@ int main( int argc, char **argv )
     {
       ROS_INFO("  ITERATION: %d", n+1);
 
-      move_joints(first_pos, move_group, vec_scaling, accel_scaling);
+      move_joints(first_pos, move_group, my_plan, visual_tools, vec_scaling, accel_scaling);
 
-      move_joints(second_pos, move_group, vec_scaling, accel_scaling);
+      move_joints(second_pos, move_group, my_plan, visual_tools, vec_scaling, accel_scaling);
 
-      move_joints(home_pos, move_group, vec_scaling, accel_scaling);
+      move_joints(home_pos, move_group, my_plan, visual_tools, vec_scaling, accel_scaling);
 
     }
 
