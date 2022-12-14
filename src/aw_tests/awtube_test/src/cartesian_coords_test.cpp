@@ -62,27 +62,31 @@ int main(int argc, char** argv)
     next.position.y += 0.2;
     waypoints.push_back(next);
 
-    // visualizations
-    visual_tools.deleteAllMarkers();
-    visual_tools.publishPath(waypoints, rvt::LIME_GREEN, rvt::MEDIUM);
-    for (const auto &it: waypoints)
-      visual_tools.publishAxisLabeled(it, "(" + std::to_string(it.position.x) + " ," + std::to_string(it.position.y) +" )", rvt::MEDIUM);
-    visual_tools.trigger();
+    const int nCycles = 4;
 
-    // cartesian path parameters
-    moveit_msgs::RobotTrajectory trajectory;
-    const double jump_threshold = 0.0;
-    const double eef_step = 0.01;
-    double fraction = move_group_interface.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
+    for( int n = 0; n < nCycles ; ++n)
+    {
+      // visualizations
+      visual_tools.deleteAllMarkers();
+      visual_tools.publishPath(waypoints, rvt::LIME_GREEN, rvt::MEDIUM);
+      for (const auto &it: waypoints)
+        visual_tools.publishAxisLabeled(it, "(" + std::to_string(it.position.x) + " ," + std::to_string(it.position.y) +" )", rvt::MEDIUM);
+      visual_tools.trigger();
 
-    // execution
-    moveit::core::MoveItErrorCode return_value = move_group_interface.execute( trajectory );
+      // cartesian path parameters
+      moveit_msgs::RobotTrajectory trajectory;
+      const double jump_threshold = 0.0;
+      const double eef_step = 0.01;
+      double fraction = move_group_interface.computeCartesianPath(waypoints, eef_step, jump_threshold, trajectory);
 
-		if( return_value == moveit::planning_interface::MoveItErrorCode::SUCCESS )
-		{
-		  ROS_INFO( "Move_group.execute successful! ");
-		}
+      // execution
+      moveit::core::MoveItErrorCode return_value = move_group_interface.execute( trajectory );
 
+      if( return_value == moveit::planning_interface::MoveItErrorCode::SUCCESS )
+      {
+        ROS_INFO( "Move_group.execute successful! ");
+      }
+    }
     ROS_INFO( "test programm COMPLETED.");
 
     return 0;
