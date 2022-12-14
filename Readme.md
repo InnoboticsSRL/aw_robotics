@@ -2,7 +2,10 @@
     <img src="doc/img/logoAW.png" alt="Aw logo" title="AutomationWare" align="right" height="40" />
 </a>
 
-Author: [Mattia Dei Rossi](deirossi@automationware.it) - Automationware
+Authors: 
+- [Mattia Dei Rossi](deirossi@automationware.it) - Automationware
+- [Armando Selvija](selvija@automationware.it) - Automationware
+- [Michele Tasca](tasca@automationware.it) - Automationware
 # Aw robotics
 
 This workspace has been developed and tested on `ros melodic`.
@@ -47,4 +50,39 @@ roslaunch awtube31814v2_moveit_config demo.launch
 ### Launch with pilz pipeline
 ```bash
 roslaunch awtube31814v2_moveit_config demo.launch pipeline:=pilz_industrial_motion_planner
+```
+
+## Launch AwJoint demo
+
+### Expected behaviour
+<img src="/doc/img/j_actuator_test.gif" width="300" height="300"/>
+
+### Commmand
+```bash
+roslaunch j_actuator_test test.launch
+```
+
+## Launch AwTube demo
+### Joint position Test
+<img src="/doc/img/joint_position_test.gif" width="300" height="300"/>
+
+### Commmand
+```bash
+roslaunch awtube_test joint_position_test.launch
+```
+
+### Target Pose test
+<img src="/doc/img/pose_coords_test.gif" width="300" height="300"/>
+
+### Commmand
+```bash
+roslaunch awtube_test pose_coords_test.launch
+```
+
+### Cartesian coordinate test
+<img src="/doc/img/cartesian_coords_test.gif" width="300" height="300"/>
+
+### Commmand
+```bash
+roslaunch awtube_test cartesian_coords_test.launch
 ```
