@@ -55,7 +55,7 @@ roslaunch awtube31814v2_moveit_config demo.launch pipeline:=pilz_industrial_moti
 ## Launch AwJoint demo
 
 ### Expected behaviour
-<img src="/doc/img/j_actuator_test.gif" width="300" height="300"/>
+<img src="./doc/img/j_actuator_test.gif" width="50%"/>
 
 ### Commmand
 ```bash
@@ -64,7 +64,7 @@ roslaunch j_actuator_test test.launch
 
 ## Launch AwTube demo
 ### Joint position Test
-<img src="/doc/img/joint_position_test.gif" width="300" height="300"/>
+<img src="./doc/img/joint_position_test.gif" width="60%"/>
 
 ### Commmand
 ```bash
@@ -72,7 +72,7 @@ roslaunch awtube_test joint_position_test.launch
 ```
 
 ### Target Pose test
-<img src="/doc/img/pose_coords_test.gif" width="300" height="300"/>
+<img src="./doc/img/pose_coords_test.gif" width="60%"/>
 
 ### Commmand
 ```bash
@@ -80,7 +80,7 @@ roslaunch awtube_test pose_coords_test.launch
 ```
 
 ### Cartesian coordinate test
-<img src="/doc/img/cartesian_coords_test.gif" width="300" height="300"/>
+<img src="./doc/img/cartesian_coords_test.gif" width="60%"/>
 
 ### Commmand
 ```bash
