@@ -92,6 +92,7 @@ int main( int argc, char **argv )
     // visual tools
     namespace rvt = rviz_visual_tools;
     moveit_visual_tools::MoveItVisualTools visual_tools("awtube3_baselink");
+    visual_tools.deleteAllMarkers();
 
     moveit::planning_interface::MoveGroupInterface::Plan my_plan;
 
@@ -102,21 +103,22 @@ int main( int argc, char **argv )
 
     // arbitrarily chosen
     const int nCycles = 4;
-    double vec_scaling = 0.5;
-    double accel_scaling = 0.5;
+    double scale_vel = 0.2;
+    double scale_accel = 0.2;
     move_group.setPlanningTime( 15.0 );
     move_group.setGoalTolerance( 0.0005 );
     move_group.setGoalOrientationTolerance( 0.0005 );
+    move_group.setPlannerId("PTP");
 
     for (int n=0; n<nCycles; n++)
     {
       ROS_INFO("  ITERATION: %d", n+1);
 
-      move_joints(first_pos, move_group, my_plan, visual_tools, vec_scaling, accel_scaling);
+      move_joints(first_pos, move_group, my_plan, visual_tools, scale_vel, scale_accel);
 
-      move_joints(second_pos, move_group, my_plan, visual_tools, vec_scaling, accel_scaling);
+      move_joints(second_pos, move_group, my_plan, visual_tools, scale_vel, scale_accel);
 
-      move_joints(home_pos, move_group, my_plan, visual_tools, vec_scaling, accel_scaling);
+      move_joints(home_pos, move_group, my_plan, visual_tools, scale_vel, scale_accel);
 
     }
 
