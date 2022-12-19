@@ -19,6 +19,6 @@
   <arg name="moveit_controller_manager" default="" />
   <!-- We use pass_all_args=true here to pass execution_type, which is required by fake controllers, but not by real-robot controllers.
        As real-robot controller_manager.launch files shouldn't be required to define this argument, we use the trick of passing all args. -->
-  <include file="$(find j_actuator_moveit_config)/launch/$(arg moveit_controller_manager)_moveit_controller_manager.launch.xml" pass_all_args="true" />
+  <include file="$(find j_actuator_moveit_config)/launch/$(arg moveit_controller_manager)moveit_controller_manager.launch.xml" pass_all_args="true" />
 
 </launch>

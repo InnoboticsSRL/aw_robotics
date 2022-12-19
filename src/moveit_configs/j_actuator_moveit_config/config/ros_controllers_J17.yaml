@@ -17,9 +17,9 @@ joint_state_controller:
   type: joint_state_controller/JointStateController
   publish_rate: 50
 controller_list:
-  - name: awjoint_controller
+  - name: /awjoint1750/robot_manager/arm/controller/trajectory
     action_ns: follow_joint_trajectory
     default: True
     type: FollowJointTrajectory
     joints:
-      J17
+      - J17
