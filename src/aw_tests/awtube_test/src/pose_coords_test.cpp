@@ -87,17 +87,19 @@ int main( int argc, char **argv )
     // visual tools
     namespace rvt = rviz_visual_tools;
     moveit_visual_tools::MoveItVisualTools visual_tools("awtube3_baselink");
+    visual_tools.deleteAllMarkers();
     
     // WARNING: CHOOSE SAFE VALUES
     // safety velocity and acceleration
-    double scale_vel = 0.4;
-    double scale_accel = 0.4;
+    double scale_vel = 0.2;
+    double scale_accel = 0.2;
     const int ncycles = 2;
 
     // arbitrarily chosen
     move_group.setPlanningTime( 15.0 );
     move_group.setGoalTolerance( 0.0005 );
     move_group.setGoalOrientationTolerance( 0.0005 );
+    move_group.setPlannerId("PTP");
 
     for (int n=0;n<ncycles;n++)
     {

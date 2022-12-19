@@ -57,6 +57,7 @@ int main(int argc, char **argv)
     move_group.setPlanningTime( 15.0 );
     move_group.setGoalTolerance( 0.0005 );
     move_group.setGoalOrientationTolerance( 0.0005 );
+    move_group.setPlannerId("PTP");
     
     std::vector<double> neg_extreme = {-3.14/2};
     std::vector<double> pos_extreme = {3.14/2};
