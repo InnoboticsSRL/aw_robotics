@@ -17,7 +17,7 @@ catkin build
 source devel/setup.bash # for each terminal launched
 ```
 
-## Launch AwJoint simulation  
+## Launch AwJoint and Awtube on simulation
 possible combination of `joint_id` with `joint_size`: 
 * awjoint1750   - J17
 * awjoint2080   - J20 
@@ -25,50 +25,23 @@ possible combination of `joint_id` with `joint_size`:
 * awjoint32100  - J32
 * awjoint40100  - J40
 
-```bash
-roslaunch j_actuator_moveit_config demo.launch joint_id:=awjoint32100 joint_size:=J32
-```
-### Launch with pilz pipeline
-```bash
-roslaunch j_actuator_moveit_config demo.launch joint_id:=awjoint32100 joint_size:=J32 pipeline:=pilz_industrial_motion_planner
-```
+### Run tests
 
-## Launch Awtube simulation
-### Awtube S
-```bash
-roslaunch awtube30808v1_moveit_config demo.launch
-```
-### Awtube M
-```bash
-roslaunch awtube31210v1_moveit_config demo.launch
-```
-### Awtube L
-```bash
-roslaunch awtube31814v2_moveit_config demo.launch
-```
-
-### Launch with pilz pipeline
-```bash
-roslaunch awtube31814v2_moveit_config demo.launch pipeline:=pilz_industrial_motion_planner
-```
-
-## Launch AwJoint demo
-
-### Expected behaviour
+### AwJoint expected behaviour
 <img src="./doc/img/j_actuator_test.gif" width="50%"/>
 
-### Commmand
+#### Commmand
 ```bash
-roslaunch j_actuator_test test.launch
+roslaunch j_actuator_test test.launch sim:=true joint_id:=awjoint32100 joint_size:=J32
 ```
 
-## Launch AwTube demo
+### Awtube expected behaviour
 ### Joint position Test
 <img src="./doc/img/joint_position_test.gif" width="60%"/>
 
 ### Commmand
 ```bash
-roslaunch awtube_test joint_position_test.launch
+roslaunch awtube_test joint_position_test.launch sim:=true awtube_size:=M
 ```
 
 ### Target Pose test
@@ -76,7 +49,7 @@ roslaunch awtube_test joint_position_test.launch
 
 ### Commmand
 ```bash
-roslaunch awtube_test pose_coords_test.launch
+roslaunch awtube_test pose_coords_test.launch sim:=true awtube_size:=M
 ```
 
 ### Cartesian coordinate test
@@ -84,11 +57,11 @@ roslaunch awtube_test pose_coords_test.launch
 
 ### Commmand
 ```bash
-roslaunch awtube_test cartesian_coords_test.launch
+roslaunch awtube_test cartesian_coords_test.launch sim:=true awtube_size:=M
 ```
 
 ## Launch AwJoint and Awtube on real hardware
-### Steps:
+### Setup:
 - download docker container
 ```bash
 docker pull automationware/robovu
@@ -98,12 +71,26 @@ docker pull automationware/robovu
 cd ~/aw_robotics
 chmod +x src/aw_driver/awtube_meta/scripts/robovu.sh
 ```
-- Launch ros controllers
+
+### Run tests
+- Launch ros controllers in accordance to awtube_meta config
 ```bash
 roslaunch awtube_meta bringup.launch
 ```
 
-- Launch Demo 
+- Launch AwTube test 
+```bash
+roslaunch awtube_test joint_position_test.launch sim:=false awtube_size:=M
 ```
-roslaunch awtube_meta bringup.launch
+```bash
+roslaunch awtube_test pose_coords_test.launch sim:=false awtube_size:=M
 ```
+```bash
+roslaunch awtube_test cartesian_coords_test.launch sim:=false awtube_size:=M
+```
+
+- Launch AwJoint test 
+```
+roslaunch j_actuator_test test.launch sim:=false joint_id:=awjoint32100 joint_size:=J32
+```
+
