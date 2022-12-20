@@ -71,6 +71,11 @@ docker pull automationware/robovu
 cd ~/aw_robotics
 chmod +x src/aw_driver/awtube_meta/scripts/robovu.sh
 ```
+- run realtime tuning script
+```
+cd ~/aw_robotics/src/aw_driver/rt_utils
+sudo ./activate_all.sh
+```
 
 ### Run tests
 - Launch ros controllers in accordance to awtube_meta config
