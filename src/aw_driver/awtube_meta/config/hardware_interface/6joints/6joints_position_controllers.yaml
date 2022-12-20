@@ -1,0 +1,42 @@
+  controller:
+    state:
+      type: joint_state_controller/JointStateController
+      publish_rate: 100
+    trajectory:
+        type: position_controllers/JointTrajectoryController
+        joints:
+          - awtube3_joint1
+          - awtube3_joint2
+          - awtube3_joint3
+          - awtube3_joint4
+          - awtube3_joint5
+          - awtube3_joint6
+        constraints:
+            goal_time: 0.1
+
+    position:
+      joint1:
+        type: position_controllers/JointPositionController
+        joint: awtube3_joint1
+        pid: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+      joint2:
+        type: position_controllers/JointPositionController
+        joint: awtube3_joint2
+        pid: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+      joint3:
+        type: position_controllers/JointPositionController
+        joint: awtube3_joint3
+        pid: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+      joint4:
+        type: position_controllers/JointPositionController
+        joint: awtube3_joint4
+        pid: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+      joint5:
+        type: position_controllers/JointPositionController
+        joint: awtube3_joint5
+        pid: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+      joint6:
+        type: position_controllers/JointPositionController
+        joint: awtube3_joint6
+        pid: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+

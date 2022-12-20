@@ -1,0 +1,25 @@
+<launch>
+
+    <!-- arguments to load awtube_meta/config files -->
+    <!-- AwJoint-->
+    <arg name="controller" default="trajectory" />
+    <arg name="robot_name" default="awjoint40100" />
+    <arg name="urdf_path" default="/robovu/src/aw_descriptions/j_actuators/awjoint40100/urdf/awjoint40100.urdf" />
+
+    <arg name="subsystem" default="arm" />
+    <arg name="joints" default="1joint" />
+    <arg name="iface" default="position" />
+
+    <!-- AwTube -->
+    <!-- <arg name="controller" value="trajectory" />
+    <arg name="robot_name" value="awtube31210v1" />
+    <arg name="urdf_path" value="/robovu/src/aw_descriptions/awtube/awtube31210v1/urdf/awtube31210v1.urdf" />
+
+    <arg name="subsystem" value="arm" />
+    <arg name="joints" value="6joints" />
+    <arg name="iface" value="position" /> -->
+    
+    <!-- Load docker container-->
+    <node name="robovu" pkg="awtube_meta" type="robovu.sh" output="screen" args="$(arg controller) $(arg robot_name) $(arg urdf_path) $(arg subsystem) $(arg joints) $(arg iface)" />
+
+</launch>

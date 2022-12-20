@@ -87,11 +87,23 @@ roslaunch awtube_test pose_coords_test.launch
 roslaunch awtube_test cartesian_coords_test.launch
 ```
 
-## Launch AwJoint simulation on real hardware
+## Launch AwJoint and Awtube on real hardware
+### Steps:
+- download docker container
 ```bash
 docker pull automationware/robovu
 ```
-
+- make script executable inside aw_robotics workspace
+```
+cd ~/aw_robotics
+chmod +x src/aw_driver/awtube_meta/scripts/robovu.sh
+```
+- Launch ros controllers
 ```bash
-docker run -it --rm --privileged --net=host -v /home/mattia/aw_robotics/src/aw_driver/awtube_meta:/robovu/src/awtube_meta robovu
+roslaunch awtube_meta bringup.launch
+```
+
+- Launch Demo 
+```
+roslaunch awtube_meta bringup.launch
 ```

@@ -1,0 +1,12 @@
+awtube31210v1:
+  robot_config:
+    arm:
+      elements:
+        id_0: Synapticon
+        id_1: Synapticon
+        id_2: Synapticon
+        id_3: Synapticon
+        id_4: Synapticon
+        id_5: Synapticon
+      communication_manager:
+        name: EthercatManager

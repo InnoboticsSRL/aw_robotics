@@ -1,0 +1,17 @@
+publish_hz: 10.
+status_publisher_topic: gripper/gripper_status
+clamp:
+  open_service: gripper/open_clamp
+  close_service: gripper/close_clamp
+vacuum_pump:
+  activate_service: gripper/vacuum_on
+  deactivate_service: gripper/vacuum_off
+interlay:
+  attach_service: gripper/attach_interlay_gripper
+  detach_service: gripper/detach_interlay_gripper
+box:
+  attach_service: gripper/attach_box_gripper
+  detach_service: gripper/detach_box_gripper
+manual:
+  manual_service: gripper/manual_tool_change
+

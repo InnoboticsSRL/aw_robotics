@@ -1,0 +1,6 @@
+joint_offsets:
+  J40: 0
+
+joint_read_ratio:
+  J40: 1.0
+

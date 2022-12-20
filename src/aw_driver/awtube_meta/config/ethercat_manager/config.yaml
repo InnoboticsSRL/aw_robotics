@@ -1,0 +1,5 @@
+interface_name: eno2
+operation_mode: cyclic_sync_pos_mode
+cpu_id: 3
+frequency: 1000
+clients_expected: 1

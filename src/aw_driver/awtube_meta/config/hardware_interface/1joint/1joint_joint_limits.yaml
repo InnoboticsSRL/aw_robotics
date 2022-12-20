@@ -1,0 +1,15 @@
+robot_manager: 
+  joint_limits:
+    J40:
+      has_position_limits: true
+      min_position: -100.0
+      max_position: 100.0
+      has_velocity_limits: true
+      max_velocity: 1000.0
+      has_acceleration_limits: false
+      max_acceleration: 0.0
+      has_jerk_limits: true
+      max_jerk: 1000.0
+      has_effort_limits: true
+      max_effort: 3000.0
+      min_effort: -3000.0

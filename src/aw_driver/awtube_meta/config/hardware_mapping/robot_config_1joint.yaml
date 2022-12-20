@@ -1,0 +1,7 @@
+awjoint40100:
+  robot_config:
+    arm:
+      elements:
+        id_0: Synapticon
+      communication_manager:
+        name: EthercatManager

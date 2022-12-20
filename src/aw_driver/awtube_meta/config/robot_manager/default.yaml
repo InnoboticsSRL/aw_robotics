@@ -1,0 +1,9 @@
+publish_hz: 100. # publish rate of the arm_state_topic topic
+arm_state_topic: "/awtube/robot_manager/arm_state"
+reset_ethercat_manager_topic: "/awtube/ethercat_manger/reset_ethercat_manager"
+get_arm_state_topic: "/awtube/robot_manager/get_arm_state"
+box_presence_topic_name: "/awtube/io_manager/get_box_presence_state"
+gripper_presence_topic_name: "/awtube/io_manager/get_gripper_presence_state"
+set_lidar_safety_field_topic_name: "/awtube/io_manager/set_lidar_safety_field"
+arm_name: "arm" # this parameter has to be inline with the subsystem name in robot_config.yaml
+controllers_paused_in_safety: ["arm/controller/trajectory"] # list of controllers that are paused when arm into safety

@@ -1,0 +1,16 @@
+  joint_offsets:
+    awtube3_joint1: 0
+    awtube3_joint2: 0
+    awtube3_joint3: 0
+    awtube3_joint4: 0
+    awtube3_joint5: 0
+    awtube3_joint6: 0
+
+  joint_read_ratio:
+    awtube3_joint1: 1.0
+    awtube3_joint2: 1.0
+    awtube3_joint3: 1.0
+    awtube3_joint4: 1.0
+    awtube3_joint5: 1.0
+    awtube3_joint6: 1.0
+

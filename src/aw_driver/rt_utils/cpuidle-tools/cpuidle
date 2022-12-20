@@ -1,0 +1,76 @@
+#!/bin/bash
+
+if test -z "$1" -o "$1" = "--help"
+then
+  echo "Usage: `basename $0` <state> [<enable|disable> [<cpu>]]"
+  echo "Function: Show/modify sleep state setting"
+  exit 1
+fi
+
+if ! echo "$1" | grep -q -e ^[0-9]$ -e ^all$ || \
+ test "$2" != enable -a "$2" != disable -a "$2" != "" || \
+ ( test "$2" -a "$3" && ! echo "$3" | grep -q ^[0-9]*$ )
+then
+  echo "What?"
+  exit 1
+fi
+cstate="$1"
+action="$2"
+cpu="$3"
+
+if test $cstate = all
+then
+  states=`ls -d1 /sys/devices/system/cpu/cpu0/cpuidle/state* | wc -l`
+  states=`expr $states - 1`
+  for i in `seq 0 $states`
+  do
+    $0 $i $action $cpu
+  done
+  exit 0
+fi
+
+idledir=/sys/devices/system/cpu/cpu'$i'/cpuidle/state$cstate
+i=0
+idledir0=`eval echo $idledir`
+
+if ! test -d $idledir0
+then
+  exit 1
+fi
+
+i="*"
+idledirall=`eval echo $idledir`
+cpus=`ls -1d $idledirall | wc -l`
+maxcpu=`expr $cpus - 1`
+
+for i in `seq 0 $maxcpu`
+do
+  idledircpu=`eval echo $idledir`
+  statestr="state $cstate (`cat $idledircpu/name`)"
+  if test -z "$action"
+  then
+    echo -n "CPU $i, $statestr: "
+    value=`cat $idledircpu/disable`
+    if test $value = 0
+    then
+      echo enabled
+    elif test $value = 1
+    then
+      echo DISABLED
+    fi
+  elif test $action = enable
+  then
+    if test -z "$cpu" -o "$cpu" -a $i = "$cpu"
+    then
+      echo 0 >$idledircpu/disable
+      echo "CPU $i, $statestr: enabled"
+    fi
+  elif test $action = disable
+  then
+    if test -z "$cpu" -o "$cpu" -a $i = "$cpu"
+    then
+      echo 1 >$idledircpu/disable
+      echo "CPU $i, $statestr: DISABLED"
+    fi
+  fi
+done
