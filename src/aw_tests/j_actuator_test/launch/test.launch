@@ -2,12 +2,26 @@
 
     <arg name="joint_id" default="awjoint1750" />
     <arg name="joint_size" default="J17" />
+    <arg name="sim" default="true" />
+        <!-- <arg name="rviz_config" value="$(eval find(moveit_pkg)+'/config/moveit_'+(joint_size)+'.rviz')"/> -->
+
 
     <!-- Run the main MoveIt! executable without trajectory execution (we do not have controllers configured by default) -->
-    <include file="$(find j_actuator_moveit_config)/launch/demo.launch">
+    <include
+        if="$(eval sim == true)"
+        file="$(find j_actuator_moveit_config)/launch/demo.launch">
+        <arg name="pipeline" value="pilz_industrial_motion_planner" />
         <arg name="joint_id" value="$(arg joint_id)" />
         <arg name="joint_size" value="$(arg joint_size)" />
     </include>
+    <include
+        if="$(eval sim == false)"
+        file="$(find j_actuator_moveit_config)/launch/demo_planning_execution.launch">
+        <arg name="pipeline" value="pilz_industrial_motion_planner" />
+        <arg name="joint_id" value="$(arg joint_id)" />
+        <arg name="joint_size" value="$(arg joint_size)" />
+    </include>
+
 
     <node name="j_actuator_test_node" pkg="j_actuator_test" type="j_actuator_test" output="screen" />
 

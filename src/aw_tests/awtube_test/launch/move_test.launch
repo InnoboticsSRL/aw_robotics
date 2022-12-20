@@ -1,0 +1,44 @@
+<launch>
+    <arg name="awtube_size" default="L" />
+    <arg name="sim" default="true" />
+
+    <group if="$(eval awtube_size == 'L')">
+        <include
+            if="$(eval sim == true)"
+            file="$(find awtube31814v2_moveit_config)/launch/demo.launch">
+            <arg name="pipeline" value="pilz_industrial_motion_planner" />
+        </include>
+        <include
+            if="$(eval sim == false)"
+            file="$(find awtube31814v2_moveit_config)/launch/demo_planning_execution.launch">
+            <arg name="pipeline" value="pilz_industrial_motion_planner" />
+        </include>
+    </group>
+
+    <group if="$(eval awtube_size == 'M')">
+        <include
+            if="$(eval sim == true)"
+            file="$(find awtube31210v1_moveit_config)/launch/demo.launch">
+            <arg name="pipeline" value="pilz_industrial_motion_planner" />
+        </include>
+        <include
+            if="$(eval sim == false)"
+            file="$(find awtube31210v1_moveit_config)/launch/demo_planning_execution.launch">
+            <arg name="pipeline" value="pilz_industrial_motion_planner" />
+        </include>
+    </group>
+
+    <group if="$(eval awtube_size == 'S')">
+        <include
+            if="$(arg sim == true)"
+            file="$(find awtube30808v1_moveit_config)/launch/demo.launch">
+            <arg name="pipeline" value="pilz_industrial_motion_planner" />
+        </include>
+        <include
+            if="$(eval sim == false)"
+            file="$(find awtube30808v1_moveit_config)/launch/demo_planning_execution.launch">
+            <arg name="pipeline" value="pilz_industrial_motion_planner" />
+        </include>
+    </group>
+
+</launch>

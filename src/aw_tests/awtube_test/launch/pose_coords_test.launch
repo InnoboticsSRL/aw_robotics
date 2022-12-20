@@ -1,23 +1,11 @@
 <launch>
     <arg name="awtube_size" default="L" />
+    <arg name="sim" default="true" />
 
-    <include
-        if="$(eval awtube_size == 'L')"
-        file="$(find awtube31814v2_moveit_config)/launch/demo.launch">
-        <arg name="pipeline" value="pilz_industrial_motion_planner" />
+    <include file="$(find awtube_test)/launch/move_test.launch">
+        <arg name="awtube_size" value="$(arg awtube_size)" />
+        <arg name="sim" value="$(arg sim)" />
     </include>
-
-    <include
-        if="$(eval awtube_size == 'M')"
-        file="$(find awtube31210v1_moveit_config)/launch/demo.launch">
-        <arg name="pipeline" value="pilz_industrial_motion_planner" />
-    </include>
-
-    <include
-        if="$(eval awtube_size == 'S')"
-        file="$(find awtube30808v1_moveit_config)/launch/demo.launch">
-        <arg name="pipeline" value="pilz_industrial_motion_planner" />
-    </include>
-
+    
     <node name="awtube_test" pkg="awtube_test" type="pose_coords_test" output="screen" />
 </launch>
