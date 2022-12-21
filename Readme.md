@@ -14,6 +14,8 @@ This workspace has been developed and tested on `ros melodic`.
 - ros melodic http://wiki.ros.org/melodic/Installation/Ubuntu
 - docker https://docs.docker.com/engine/install/ubuntu/
 - docker privileges https://docs.docker.com/engine/install/linux-postinstall/
+- rt patch reccomended ( not mandatory ) 
+- `sudo apt install ros-melodic-pilz*`
 
 ## Compile
 ```bash
@@ -76,6 +78,8 @@ docker pull automationware/robovu
 cd ~/aw_robotics
 chmod +x src/aw_driver/awtube_meta/scripts/robovu.sh
 ```
+- configure realtime tuning script [rt_config](./src/aw_driver/rt_utils/README.md)
+
 - run realtime tuning script
 ```
 cd ~/aw_robotics/src/aw_driver/rt_utils
@@ -83,7 +87,9 @@ sudo ./activate_all.sh
 ```
 
 ### Run tests
-- Launch ros controllers in accordance to awtube_meta config
+- Configure awtube_meta pkg like [awtube_meta configuration](./doc/configuration_awtube_meta.md)
+
+### Launch RoboVu with
 ```bash
 roslaunch awtube_meta bringup.launch
 ```
