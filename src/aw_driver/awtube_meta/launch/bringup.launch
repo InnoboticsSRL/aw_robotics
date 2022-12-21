@@ -1,25 +1,55 @@
 <launch>
 
-    <!-- arguments to load awtube_meta/config files -->
     <!-- AwJoint-->
-    <arg name="controller" default="trajectory" />
     <arg name="robot_name" default="awjoint40100" />
-    <arg name="urdf_path" default="/robovu/src/aw_descriptions/j_actuators/awjoint40100/urdf/awjoint40100.urdf" />
-
+    <arg name="urdf_path" default="$(find awjoint40100)/urdf/awjoint40100.urdf" />
     <arg name="subsystem" default="arm" />
     <arg name="joints" default="1joint" />
     <arg name="iface" default="position" />
+    <arg name="controller" default="trajectory" />
 
     <!-- AwTube -->
-    <!-- <arg name="controller" value="trajectory" />
-    <arg name="robot_name" value="awtube31210v1" />
-    <arg name="urdf_path" value="/robovu/src/aw_descriptions/awtube/awtube31210v1/urdf/awtube31210v1.urdf" />
+    <!-- <arg name="robot_name" default="awtube31210v1" />
+    <arg name="urdf_path" default="$(find awtube31210v1)/urdf/awtube31210v1.urdf" />
+    <arg name="subsystem" default="arm" />
+    <arg name="joints" default="6joints" />
+    <arg name="iface" default="position" />
+    <arg name="controller" default="trajectory" /> -->
 
-    <arg name="subsystem" value="arm" />
-    <arg name="joints" value="6joints" />
-    <arg name="iface" value="position" /> -->
-    
-    <!-- Load docker container-->
-    <node name="robovu" pkg="awtube_meta" type="robovu.sh" output="screen" args="$(arg controller) $(arg robot_name) $(arg urdf_path) $(arg subsystem) $(arg joints) $(arg iface)" />
+
+    <!-- robot_config.yaml -->
+    <rosparam file="$(find awtube_meta)/config/hardware_mapping/robot_config_$(arg joints).yaml" command="load" />
+
+    <!-- robot description -->
+    <param name="robot_description" command="cat $(arg urdf_path)" />
+
+    <group ns="$(arg robot_name)">
+        <!-- ethercat_manager -->
+        <rosparam file="$(find awtube_meta)/config/ethercat_manager/config.yaml" command="load" ns="ethercat_manager" />
+
+        <!-- robot_factory -->
+        <group ns="robot_factory">
+            <param name="path_to_urdf" type="string" value="$(arg urdf_path)" />
+            <param name="robot_name" value="$(arg robot_name)" />
+        </group>
+
+        <!-- robot_manager -->
+        <group ns="robot_manager">
+            <rosparam command="load" file="$(find awtube_meta)/config/robot_manager/default.yaml" />
+            <!-- for hardware_interface -->
+            <rosparam command="load" file="$(find awtube_meta)/config/hardware_interface/config.yaml" />
+            <rosparam file="$(find awtube_meta)/config/hardware_interface/$(arg joints)/$(arg joints)_$(arg iface)_controllers.yaml"
+                command="load" ns="$(arg subsystem)" />
+            <rosparam file="$(find awtube_meta)/config/hardware_interface/$(arg joints)/$(arg joints)_names.yaml"
+                command="load" ns="$(arg subsystem)" />
+            <rosparam file="$(find awtube_meta)/config/hardware_interface/$(arg joints)/$(arg joints)_joint_limits.yaml"
+                command="load" ns="$(arg subsystem)" />
+            <rosparam file="$(find awtube_meta)/config/hardware_interface/$(arg joints)/$(arg joints)_joint_offsets.yaml"
+                command="load" ns="$(arg subsystem)" />
+        </group>
+    </group>
+
+    <!-- Run docker container-->
+    <node name="robovu" pkg="awtube_meta" type="robovu.sh" output="screen" args="$(arg controller) $(arg robot_name) $(arg subsystem)"/>
 
 </launch>
