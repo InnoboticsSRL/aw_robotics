@@ -68,6 +68,8 @@ roslaunch awtube_test cartesian_coords_test.launch sim:=true awtube_size:=M
 ```
 
 ## Launch AwJoint and Awtube on real hardware
+AwJoints and AwTube currently are moved only in **CiA402** *Cyclic synchronous position* mode 
+
 ### Setup:
 - pull docker container
 ```bash

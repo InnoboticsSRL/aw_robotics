@@ -1,20 +1,20 @@
 <launch>
 
     <!-- AwJoint-->
-    <!-- <arg name="robot_name" default="awjoint40100" />
+    <arg name="robot_name" default="awjoint40100" />
     <arg name="urdf_path" default="$(find awjoint40100)/urdf/awjoint40100.urdf" />
     <arg name="subsystem" default="arm" />
     <arg name="joints" default="1joint" />
     <arg name="iface" default="position" />
-    <arg name="controller" default="trajectory" /> -->
+    <arg name="controller" default="trajectory" />
 
     <!-- AwTube -->
-    <arg name="robot_name" default="awtube31210v1" />
+    <!-- <arg name="robot_name" default="awtube31210v1" />
     <arg name="urdf_path" default="$(find awtube31210v1)/urdf/awtube31210v1.urdf" />
     <arg name="subsystem" default="arm" />
     <arg name="joints" default="6joints" />
     <arg name="iface" default="position" />
-    <arg name="controller" default="trajectory" />
+    <arg name="controller" default="trajectory" /> -->
 
 
     <!-- robot_config.yaml -->
