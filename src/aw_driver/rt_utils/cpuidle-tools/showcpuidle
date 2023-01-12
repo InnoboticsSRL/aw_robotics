@@ -1,7 +1,0 @@
-#!/bin/bash
-
-i=0
-while cpuidle $i
-do
-  i=`expr $i + 1`
-done
