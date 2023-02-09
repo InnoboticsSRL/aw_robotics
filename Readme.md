@@ -15,6 +15,7 @@ This workspace has been developed and tested on `ros melodic`.
 - docker https://docs.docker.com/engine/install/ubuntu/
 - docker privileges https://docs.docker.com/engine/install/linux-postinstall/
 - rt patch reccomended ( not mandatory ) 
+- rt utils https://github.com/FraunhoferItalia/rt_utils ( mandatory for RoboVu )
 - `sudo apt install ros-melodic-pilz*`
 
 ## Compile
