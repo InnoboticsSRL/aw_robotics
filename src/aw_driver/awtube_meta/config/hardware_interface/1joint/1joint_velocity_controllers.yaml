@@ -1,0 +1,21 @@
+controller:
+  state:
+    type: joint_state_controller/JointStateController
+    publish_rate: 100
+  trajectory:
+      type: velocity_controllers/JointTrajectoryController
+      joints:
+        - J40
+      gains:
+        J40: {p: 1, i: 0, d: 0, i_clamp: 1.0}
+      constraints:
+          goal_time: 0.1
+      stop_trajectory_duration: 0.35
+
+  velocity:
+    J40:
+      type: velocity_controllers/JointVelocityController
+      joint: J40
+      pid: {p: 100.0, i: 0.0, d: 0.0, i_clamp: 0}
+
+    

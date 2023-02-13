@@ -68,7 +68,14 @@ roslaunch awtube_test cartesian_coords_test.launch sim:=true awtube_size:=M
 ```
 
 ## Launch AwJoint and Awtube on real hardware
-AwJoints and AwTube currently are moved only in **CiA402** *Cyclic synchronous position* mode 
+AwJoints and AwTube currently are moved only in **CiA402** mode of operation:
+1. *Cyclic synchronous position* mode -> _iface_:=position
+2. *Cyclic synchronous velocity* mode -> _iface_:=velocity
+3. *Cyclic synchronous torque* mode   -> _iface_:=effort
+
+For 1. and 2. mode of operations `JointTrjectoryController` are available while for 3. only `JointGroupEffortController` is provided.
+_iface_ has to be setted launching `bringup.launch`
+
 
 ### Setup:
 - pull docker container
@@ -82,9 +89,8 @@ chmod +x src/aw_driver/awtube_meta/scripts/robovu.sh
 ```
 - configure realtime tuning script [rt_config](./src/aw_driver/rt_utils/README.md)
 
-- run realtime tuning script
+- run realtime tuning script inside rt_utils folder
 ```
-cd ~/aw_robotics/src/aw_driver/rt_utils
 sudo ./activate_all.sh
 ```
 
@@ -112,3 +118,17 @@ roslaunch awtube_test cartesian_coords_test.launch sim:=false awtube_size:=M
 roslaunch j_actuator_test test.launch sim:=false joint_id:=awjoint32100 joint_size:=J32
 ```
 
+### Test Effort Mode
+
+To use `JointGroupEffortController` controller users have to type the desired target torque on the related topic. `**/robot_manager/arm/controller/effort/command` like the one shown in the following paragraph. The desired Target Torque is expressed in *Nm* ( referred to Input Shaft).
+
+```
+rostopic pub /awjoint40100/robot_manager/arm/controller/effort/command std_msgs/Float64MultiArray "layout:
+  dim:
+  - label: ''
+    size: 1
+    stride: 0
+  data_offset: 0
+data:
+- 0" #TargetTorque --once
+```
