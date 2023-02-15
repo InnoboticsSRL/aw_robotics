@@ -17,6 +17,7 @@ This workspace has been developed and tested on `ros melodic`.
 - rt patch reccomended ( not mandatory ) 
 - rt utils https://github.com/FraunhoferItalia/rt_utils ( mandatory for RoboVu )
 - `sudo apt install ros-melodic-pilz*`
+- pilz patch ( reccommended ) https://github.com/FraunhoferItalia/pilz_industrial_motion/commit/21536044cdc2e4fec0e72564b62ac6fba9c9ab3f
 
 ## Compile
 ```bash
